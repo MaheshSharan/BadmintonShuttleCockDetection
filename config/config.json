@@ -1,0 +1,50 @@
+{
+    "data": {
+        "root_dir": "ShuttleCockFrameDataset",
+        "splits": ["Train", "valid"],
+        "img_size": [1280, 720],
+        "box_size": [32, 32],
+        "match_pattern": "match*",
+        "csv_pattern": "*_ball.csv"
+    },
+    "processing": {
+        "frame_sampling": 1,
+        "quality_threshold": 0.8,
+        "min_visibility_ratio": 0.3
+    },
+    "augmentation": {
+        "rotation_range": [-30, 30],
+        "scale_range": [0.8, 1.2],
+        "translation_range": [-0.1, 0.1],
+        "brightness_range": [-0.2, 0.2],
+        "contrast_range": [-0.2, 0.2]
+    },
+    "analysis": {
+        "output_dir": "outputs/analysis",
+        "visualization": {
+            "trajectory": {
+                "max_frames_per_plot": 100,
+                "line_alpha": 0.6,
+                "marker_size": 4
+            },
+            "heatmap": {
+                "resolution": [64, 36],
+                "smoothing_factor": 1.5
+            },
+            "motion": {
+                "velocity_bins": 30,
+                "acceleration_bins": 30
+            }
+        },
+        "statistics": {
+            "velocity_window": 5,
+            "acceleration_window": 9,
+            "min_track_length": 10
+        }
+    },
+    "reporting": {
+        "save_formats": ["png", "pdf"],
+        "dpi": 300,
+        "figure_size": [12, 8]
+    }
+}

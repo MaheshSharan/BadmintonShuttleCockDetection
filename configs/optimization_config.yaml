@@ -1,0 +1,93 @@
+# Optimization Configuration
+
+batch_processor:
+  base_batch_size: 32
+  accumulation_steps: 4
+  mixed_precision: true
+  dynamic_batching: true
+  memory_fraction: 0.9
+
+memory_optimizer:
+  enable_checkpoint: true
+  cache_size_limit: 1024  # MB
+  pin_memory: true
+  optimize_cuda_cache: true
+
+gpu_optimizer:
+  num_gpus: null  # auto-detect
+  mixed_precision: true
+  memory_efficient: true
+  prefetch_factor: 2
+  async_loading: true
+
+model_pruner:
+  pruning_method: 'l1_unstructured'
+  target_sparsity: 0.5
+  quantize: true
+  pruning_schedule: 'gradual'
+  fine_tune_steps: 1000
+
+# Model-specific parameters
+model_params:
+  input_size: [1280, 720]
+  feature_strides: [4, 8, 16, 32, 64]
+  anchor_scales: [8, 16, 32]
+  anchor_ratios: [0.5, 1.0, 2.0]
+
+# Physics parameters for trajectory prediction and optimization
+physics_params:
+  shuttlecock_mass: 0.005  # kg
+  drag_coefficient: 0.6
+  lift_coefficient: 0.4
+  air_density: 1.225  # kg/m³
+  gravity: 9.81  # m/s²
+  cross_section: 0.00125  # m²
+  characteristic_length: 0.065  # m
+  initial_velocity_range: [0, 100]
+  confidence_threshold: 0.5
+
+# Tracking and prediction parameters
+tracking:
+  max_age: 30
+  min_hits: 3
+  iou_threshold: 0.3
+  max_cosine_distance: 0.3
+  nn_budget: 100
+
+prediction:
+  lstm_hidden_size: 256
+  lstm_num_layers: 2
+  transformer_nhead: 8
+  transformer_dim: 256
+  transformer_layers: 3
+  sequence_length: 30
+  prediction_horizon: 15
+  dropout: 0.1
+
+optimization:
+  # Trajectory Optimization
+  smoothing_window: 15
+  smoothing_polyorder: 3
+  interpolation_fps: 120
+  physics_weight: 0.7
+  temporal_weight: 0.3
+  
+  # Confidence Scoring
+  velocity_threshold: 50.0
+  acceleration_threshold: 20.0
+  smoothness_weight: 0.4
+  physics_compliance_weight: 0.6
+
+# Training parameters
+training:
+  initial_lr: 0.001
+  weight_decay: 0.0001
+  momentum: 0.9
+  max_epochs: 100
+  early_stopping_patience: 10
+  
+# Validation parameters
+validation:
+  batch_size: 16
+  frequency: 1  # epochs
+  metrics: ['mAP', 'precision', 'recall']

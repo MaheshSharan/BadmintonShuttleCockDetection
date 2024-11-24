@@ -1,0 +1,59 @@
+# Dataset and Data Files
+ShuttleCockFrameDataset/
+*.jpg
+*.png
+*.mp4
+*.avi
+*.csv
+
+# Outputs and Logs
+logs/
+*.log
+preprocessing.log
+wandb/
+tensorboard/
+checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+shuttlecock_detection.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Project specific
+todo.txt

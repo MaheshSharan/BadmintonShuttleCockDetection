@@ -1,0 +1,79 @@
+{
+    "realtime": {
+        "colors": {
+            "detection": [0, 255, 0],
+            "tracking": [255, 0, 0],
+            "prediction": [0, 0, 255]
+        },
+        "display_settings": {
+            "show_confidence": true,
+            "show_track_id": true,
+            "show_predictions": true,
+            "line_thickness": 2,
+            "font_scale": 0.5
+        }
+    },
+    "trajectory_3d": {
+        "court_dimensions": {
+            "width": 6.1,
+            "length": 13.4,
+            "net_height": 1.55
+        },
+        "plot_settings": {
+            "figsize": [12, 8],
+            "view_angle": [30, 45],
+            "show_velocity": true,
+            "show_acceleration": true
+        }
+    },
+    "training_dashboard": {
+        "update_interval": 2000,
+        "dark_mode": true,
+        "metrics": [
+            "train_loss",
+            "val_loss",
+            "learning_rate",
+            "gpu_utilization",
+            "memory_usage",
+            "batch_time"
+        ],
+        "plot_settings": {
+            "height": 400,
+            "margin": {"l": 50, "r": 50, "t": 50, "b": 50}
+        }
+    },
+    "metrics": {
+        "style": "dark",
+        "plot_settings": {
+            "figsize": [10, 6],
+            "dpi": 100,
+            "save_format": "png"
+        },
+        "metrics_to_track": [
+            "precision",
+            "recall",
+            "average_precision",
+            "trajectory_error",
+            "physics_metrics"
+        ]
+    },
+    "debug": {
+        "save_debug": true,
+        "feature_maps": {
+            "max_channels": 16,
+            "normalize": true
+        },
+        "attention": {
+            "alpha": 0.5,
+            "colormap": "jet"
+        },
+        "gradients": {
+            "bins": 50,
+            "show_statistics": true
+        },
+        "physics": {
+            "plot_energy": true,
+            "plot_forces": true
+        }
+    }
+}
